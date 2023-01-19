@@ -6,9 +6,16 @@
 //
 
 import Foundation
+import SwiftUI
+
+struct ScrollPosition<T: Hashable> {
+  let id: T
+  let anchor: UnitPoint
+}
 
 class ViewModel: ObservableObject {
   @Published var list: [Int]
+  @Published var scrollPosition: ScrollPosition<Int>?
   
   init() {
     var list: [Int] = []

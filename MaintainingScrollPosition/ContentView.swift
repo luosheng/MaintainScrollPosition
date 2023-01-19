@@ -12,11 +12,23 @@ struct ContentView: View {
   @State var index = -1
 
   var body: some View {
-    ScrollView {
-      LazyVStack {
-        ForEach(viewModel.list, id: \.self) { i in
-          Text("\(i)")
-            .frame(height: 50)
+    GeometryReader { scrollViewGeo in
+      ScrollView {
+        LazyVStack {
+          ForEach(viewModel.list, id: \.self) { i in
+            Text("\(i)")
+              .id(i)
+              .frame(height: 50)
+              .background(GeometryReader { itemGeo in
+                Color.clear
+                  .onChange(of: itemGeo.frame(in: .named("list"))) { frame in
+                    if frame.minY <= 0 && frame.maxY > 0 {
+                      let y = frame.minY / (scrollViewGeo.size.height - frame.height)
+                      viewModel.scrollPosition = ScrollPosition(id: i, anchor: .init(x: 0.5, y: y))
+                    }
+                  }
+              })
+          }
         }
       }
     }
@@ -30,6 +42,7 @@ struct ContentView: View {
         }
       }
     }
+    .coordinateSpace(name: "list")
   }
 }
 
