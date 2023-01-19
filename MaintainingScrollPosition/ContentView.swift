@@ -13,21 +13,31 @@ struct ContentView: View {
 
   var body: some View {
     GeometryReader { scrollViewGeo in
-      ScrollView {
-        LazyVStack {
-          ForEach(viewModel.list, id: \.self) { i in
-            Text("\(i)")
-              .id(i)
-              .frame(height: 50)
-              .background(GeometryReader { itemGeo in
-                Color.clear
-                  .onChange(of: itemGeo.frame(in: .named("list"))) { frame in
-                    if frame.minY <= 0 && frame.maxY > 0 {
-                      let y = frame.minY / (scrollViewGeo.size.height - frame.height)
-                      viewModel.scrollPosition = ScrollPosition(id: i, anchor: .init(x: 0.5, y: y))
+      ScrollViewReader { scrollViewProxy in
+        ScrollView {
+          LazyVStack {
+            ForEach(viewModel.list, id: \.self) { i in
+              Text("\(i)")
+                .id(i)
+                .frame(height: 50)
+                .background(GeometryReader { itemGeo in
+                  Color.clear
+                    .onChange(of: itemGeo.frame(in: .named("list"))) { frame in
+                      if frame.minY <= 0 && frame.maxY > 0 {
+                        let y = frame.minY / (scrollViewGeo.size.height - frame.height)
+                        viewModel.scrollPosition = ScrollPosition(id: i, anchor: .init(x: 0.5, y: y))
+                      }
                     }
-                  }
-              })
+                })
+            }
+          }
+        }
+        .onReceive(viewModel.$list) { _ in
+          guard let position = viewModel.scrollPosition else {
+            return
+          }
+          DispatchQueue.main.async {
+            scrollViewProxy.scrollTo(position.id, anchor: position.anchor)
           }
         }
       }
