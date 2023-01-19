@@ -8,21 +8,13 @@
 import SwiftUI
 
 struct ContentView: View {
-  @State var list: [Int]
+  @StateObject var viewModel = ViewModel()
   @State var index = -1
-
-  init() {
-    var list: [Int] = []
-    for i in 0 ... 100 {
-      list.append(i)
-    }
-    _list = State(initialValue: list)
-  }
 
   var body: some View {
     ScrollView {
       LazyVStack {
-        ForEach(list, id: \.self) { i in
+        ForEach(viewModel.list, id: \.self) { i in
           Text("\(i)")
             .frame(height: 50)
         }
@@ -31,7 +23,7 @@ struct ContentView: View {
     .toolbar {
       ToolbarItem {
         Button {
-          list.insert(index, at: 0)
+          viewModel.list.insert(index, at: 0)
           self.index = index - 1
         } label: {
           Image(systemName: "plus")

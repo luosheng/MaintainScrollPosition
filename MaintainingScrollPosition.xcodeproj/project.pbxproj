@@ -11,6 +11,7 @@
 		B361C3DF297919A400FD7747 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B361C3DE297919A400FD7747 /* ContentView.swift */; };
 		B361C3E1297919A500FD7747 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B361C3E0297919A500FD7747 /* Assets.xcassets */; };
 		B361C3E5297919A500FD7747 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B361C3E4297919A500FD7747 /* Preview Assets.xcassets */; };
+		B361C3EC29791EF400FD7747 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B361C3EB29791EF400FD7747 /* ViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +21,7 @@
 		B361C3E0297919A500FD7747 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B361C3E2297919A500FD7747 /* MaintainingScrollPosition.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MaintainingScrollPosition.entitlements; sourceTree = "<group>"; };
 		B361C3E4297919A500FD7747 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		B361C3EB29791EF400FD7747 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +56,7 @@
 			children = (
 				B361C3DC297919A400FD7747 /* MaintainingScrollPositionApp.swift */,
 				B361C3DE297919A400FD7747 /* ContentView.swift */,
+				B361C3EB29791EF400FD7747 /* ViewModel.swift */,
 				B361C3E0297919A500FD7747 /* Assets.xcassets */,
 				B361C3E2297919A500FD7747 /* MaintainingScrollPosition.entitlements */,
 				B361C3E3297919A500FD7747 /* Preview Content */,
@@ -140,6 +143,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B361C3DF297919A400FD7747 /* ContentView.swift in Sources */,
+				B361C3EC29791EF400FD7747 /* ViewModel.swift in Sources */,
 				B361C3DD297919A400FD7747 /* MaintainingScrollPositionApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
